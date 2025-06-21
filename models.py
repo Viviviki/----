@@ -10,12 +10,12 @@ class Car(Base):
     model_id = Column(Integer, ForeignKey("models.id"), default=1)
     year = Column(Integer)
     type_id = Column(Integer, ForeignKey("types.id"), default=1)
-    price_per_day = Column(DECIMAL)
-    status = Column(Integer, ForeignKey("cars.id"), default=1)
+    price_per_day = Column(Float)
+    status_id = Column(Integer, ForeignKey("statuses.id"), default=1)
 
-    mark = relationship("Marks", backref="cars")
-    model = relationship("Models", backref="cars")
-    type = relationship("Types", backref="cars")
+    mark = relationship("Mark", backref="cars")
+    model = relationship("Model", backref="cars")
+    type = relationship("Type", backref="cars")
     status = relationship("Status", backref="cars")
 
 
@@ -45,8 +45,8 @@ class Rent(Base):
     cost = Column(DECIMAL)
     status_id = Column(Integer, ForeignKey("statuses.id"), default=1)
 
-    user = relationship("Users", backref="rents")
-    car = relationship("Cars", backref="rents")
+    user = relationship("User", backref="rents")
+    car = relationship("Car", backref="rents")
     status = relationship("Status", backref="rents")
 
 class Role(Base):

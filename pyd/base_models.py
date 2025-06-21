@@ -1,11 +1,10 @@
 from pydantic import BaseModel, Field
 from datetime import date
-import decimal
 
 class BaseCar(BaseModel):
     id:int=Field(example=1)
     year:int=Field(example=2011)
-    price_per_day:decimal=Field(example=200)
+    price_per_day:float=Field(example=200)
 
 class BaseMark(BaseModel):
     id:int=Field(example=1)
@@ -23,7 +22,7 @@ class BaseRent(BaseModel):
     id:int=Field(example=1)
     start_date:date=Field(example="2025-06-21")
     end_date:date=Field(example="2025-06-24")
-    cost:decimal=Field(example=1000)
+    cost:float=Field(example=1000)
 
 
 class BaseUser(BaseModel):
